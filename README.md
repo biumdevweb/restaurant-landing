@@ -111,3 +111,4 @@ Questo progetto è stato sviluppato seguendo le best practice moderne:
 **Client**: Osteria della Tradizione (fittizio)  
 **Status**: Completato  
 **Created**: 6 Ottobre 2025
+**Repository**: https://github.com/biumdevweb/restaurant-landing
