@@ -107,8 +107,9 @@ Questo progetto è stato sviluppato seguendo le best practice moderne:
 
 ---
 
-**Project**: FASE 1 - Local Service Business  
-**Client**: Osteria della Tradizione (fittizio)  
-**Status**: Completato  
+**Project**: FASE 1 - Local Service Business
+**Client**: Osteria della Tradizione (fittizio)
+**Status**: Completato e Live
 **Created**: 6 Ottobre 2025
 **Repository**: https://github.com/biumdevweb/restaurant-landing
+**Live Site**: https://osteriadellatradizione.netlify.app/
