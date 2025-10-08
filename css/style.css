@@ -113,6 +113,7 @@ a:hover {
   background-color: var(--accent-color);
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+  color: white;
 }
 
 /* Header & Navigation */
@@ -395,12 +396,17 @@ a:hover {
   position: relative;
   max-width: 900px;
   margin: 0 auto;
+  /* Calcolo altezza per mantenere aspect ratio 16:9 (1344x768) */
+  height: 506.25px; /* 900px * 9/16 = 506.25px */
   overflow: hidden;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-hover);
 }
 
 .gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   transition: transform 0.5s ease;
 }
@@ -408,11 +414,12 @@ a:hover {
 .gallery-slide {
   min-width: 100%;
   position: relative;
+  height: 100%;
 }
 
 .gallery-slide img {
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -422,15 +429,22 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), transparent);
   color: white;
-  padding: var(--spacing-md);
+  padding: 0.8rem var(--spacing-md);
   text-align: center;
+  backdrop-filter: blur(2px);
 }
 
 .slide-caption h3 {
   color: white;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.2rem;
+  font-size: 1.5rem;
+}
+
+.slide-caption p {
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 .gallery-prev,
@@ -438,7 +452,7 @@ a:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   color: var(--primary-color);
   border: none;
   width: 50px;
@@ -450,26 +464,32 @@ a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
+  box-shadow: var(--shadow);
 }
 
 .gallery-prev:hover,
 .gallery-next:hover {
   background-color: var(--primary-color);
   color: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .gallery-prev {
-  left: var(--spacing-sm);
+  left: var(--spacing-md);
 }
 
 .gallery-next {
-  right: var(--spacing-sm);
+  right: var(--spacing-md);
 }
 
 .gallery-indicators {
   display: flex;
   justify-content: center;
   margin-top: var(--spacing-md);
+  /* Posizionati fuori dal carousel */
+  position: relative;
+  z-index: 10;
+  padding: var(--spacing-sm) 0;
 }
 
 .indicator {
@@ -480,11 +500,16 @@ a:hover {
   border: none;
   margin: 0 var(--spacing-xs);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .indicator.active {
   background-color: var(--primary-color);
+  transform: scale(1.2);
 }
 
 /* Reservations Section */
@@ -537,25 +562,48 @@ a:hover {
   margin-bottom: var(--spacing-md);
 }
 
+.form-group {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
 .form-group input,
 .form-group textarea,
 .form-group select {
   width: 100%;
-  padding: var(--spacing-sm);
-  border: 1px solid #ddd;
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) + 20px);
+  border: 2px solid rgba(210, 105, 30, 0.3);
   border-radius: var(--border-radius);
   font-family: var(--font-body);
   font-size: 1rem;
-  background-color: var(--bg-light);
+  background-color: rgba(245, 245, 220, 0.5);
+  color: #333;
+  transition: all 0.3s ease;
 }
 
 .form-group label {
   position: absolute;
-  top: var(--spacing-sm);
+  top: 50%;
   left: var(--spacing-sm);
-  color: var(--text-light);
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 1rem;
   transition: all 0.3s ease;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .form-group input:focus,
@@ -563,6 +611,9 @@ a:hover {
 .form-group select:focus {
   outline: none;
   border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+  box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.1);
 }
 
 .form-group input:focus + label,
@@ -571,12 +622,23 @@ a:hover {
 .form-group textarea:not(:placeholder-shown) + label,
 .form-group select:focus + label,
 .form-group select:valid + label {
-  top: -10px;
-  left: 10px;
-  font-size: 0.8rem;
-  background-color: white;
-  padding: 0 5px;
+  top: -12px;
+  left: 12px;
+  transform: translateY(0);
+  font-size: 0.85rem;
   color: var(--primary-color);
+  background: linear-gradient(to right, white 70%, transparent);
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+.form-group input:focus + label::before,
+.form-group input:not(:placeholder-shown) + label::before,
+.form-group textarea:focus + label::before,
+.form-group textarea:not(:placeholder-shown) + label::before,
+.form-group select:focus + label::before,
+.form-group select:valid + label::before {
+  opacity: 1;
 }
 
 .form-message {
@@ -660,6 +722,12 @@ a:hover {
 }
 
 .footer-logo h3 {
+  margin-bottom: var(--spacing-sm);
+  color: white;
+}
+
+.footer-links h3,
+.footer-social h3 {
   margin-bottom: var(--spacing-sm);
   color: white;
 }
@@ -804,8 +872,9 @@ a:hover {
   }
   
   /* Gallery Carousel Responsive */
-  .gallery-slide img {
-    height: 300px;
+  .gallery-carousel {
+    /* Calcolo altezza per mantenere aspect ratio 16:9 su tablet */
+    height: 281.25px; /* 500px * 9/16 = 281.25px (larghezza max su tablet) */
   }
   
   .gallery-prev,
@@ -814,20 +883,30 @@ a:hover {
     height: 40px;
   }
   
+  .gallery-prev {
+    left: var(--spacing-sm);
+  }
+  
+  .gallery-next {
+    right: var(--spacing-sm);
+  }
+  
   .slide-caption {
-    padding: 0.5rem var(--spacing-sm);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent);
+    padding: 0.6rem var(--spacing-sm);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15), transparent);
+    backdrop-filter: none; /* Rimuovo sfocatura su mobile */
   }
   
   .slide-caption h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.2rem;
+    font-size: 1.3rem; /* Ridotto da 1.5rem */
+    margin-bottom: 0.15rem;
     line-height: 1.2;
   }
   
   .slide-caption p {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Ridotto da 0.9rem */
     margin-bottom: 0;
+    opacity: 0.85;
   }
 }
 
@@ -849,8 +928,9 @@ a:hover {
   }
   
   /* Gallery Carousel Mobile */
-  .gallery-slide img {
-    height: 250px;
+  .gallery-carousel {
+    /* Calcolo altezza per mantenere aspect ratio 16:9 su mobile */
+    height: 225px; /* 400px * 9/16 = 225px (larghezza max su mobile) */
   }
   
   .gallery-prev,
@@ -860,11 +940,11 @@ a:hover {
   }
   
   .gallery-prev {
-    left: 5px;
+    left: var(--spacing-xs);
   }
   
   .gallery-next {
-    right: 5px;
+    right: var(--spacing-xs);
   }
   
   .indicator {
@@ -873,18 +953,20 @@ a:hover {
   }
   
   .slide-caption {
-    padding: 0.4rem var(--spacing-sm);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent);
+    padding: 0.5rem var(--spacing-xs);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15), transparent);
+    backdrop-filter: none; /* Rimuovo sfocatura su mobile */
   }
   
   .slide-caption h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* Ridotto da 1.3rem */
     margin-bottom: 0.1rem;
     line-height: 1.1;
   }
   
   .slide-caption p {
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* Ridotto da 0.85rem */
     margin-bottom: 0;
+    opacity: 0.85;
   }
 }

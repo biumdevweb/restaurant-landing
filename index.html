@@ -16,6 +16,10 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
     
+    <!-- Font Awesome for icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
     <!-- Critical CSS -->
     <style>
 /* Critical CSS for above-the-fold content */
@@ -234,6 +238,7 @@ body {
   background-color: var(--accent-color);
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+  color: white;
 }
 
 /* Animation */
@@ -300,20 +305,106 @@ body {
   }
   
   /* Gallery Carousel Mobile Optimizations */
+  .gallery-carousel {
+    height: 281.25px !important; /* Calcolo altezza per aspect ratio 16:9 su tablet */
+  }
+  
   .slide-caption {
-    padding: 0.5rem 1.5vw !important;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent) !important;
+    padding: 0.6rem var(--spacing-sm) !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15), transparent) !important;
+    backdrop-filter: none !important; /* Rimuovo sfocatura su mobile */
   }
   
   .slide-caption h3 {
-    font-size: 1.6rem !important;
-    margin-bottom: 0.2rem !important;
+    font-size: 1.3rem !important; /* Ridotto da 1.5rem */
+    margin-bottom: 0.15rem !important;
     line-height: 1.2 !important;
   }
   
   .slide-caption p {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important; /* Ridotto da 0.9rem */
     margin-bottom: 0 !important;
+    opacity: 0.85 !important;
+  }
+  
+  /* Form styles for critical CSS */
+  .form-group {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) + 20px);
+    border: 2px solid rgba(210, 105, 30, 0.3);
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: rgba(245, 245, 220, 0.5);
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group label {
+    position: absolute;
+    top: 50%;
+    left: var(--spacing-sm);
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-group label::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #222;
+    box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.1);
+  }
+  
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:focus + label,
+  .form-group textarea:not(:placeholder-shown) + label,
+  .form-group select:focus + label,
+  .form-group select:valid + label {
+    top: -12px;
+    left: 12px;
+    transform: translateY(0);
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    background: linear-gradient(to right, white 70%, transparent);
+    padding: 0 8px;
+    font-weight: 600;
+  }
+  
+  .form-group input:focus + label::before,
+  .form-group input:not(:placeholder-shown) + label::before,
+  .form-group textarea:focus + label::before,
+  .form-group textarea:not(:placeholder-shown) + label::before,
+  .form-group select:focus + label::before,
+  .form-group select:valid + label::before {
+    opacity: 1;
   }
 }
 
@@ -339,20 +430,26 @@ body {
   }
   
   /* Gallery Carousel Small Mobile Optimizations */
+  .gallery-carousel {
+    height: 225px !important; /* Calcolo altezza per aspect ratio 16:9 su mobile */
+  }
+  
   .slide-caption {
-    padding: 0.4rem 1.8vw !important;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent) !important;
+    padding: 0.5rem var(--spacing-xs) !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15), transparent) !important;
+    backdrop-filter: none !important; /* Rimuovo sfocatura su mobile */
   }
   
   .slide-caption h3 {
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important; /* Ridotto da 1.3rem */
     margin-bottom: 0.1rem !important;
     line-height: 1.1 !important;
   }
   
   .slide-caption p {
-    font-size: 0.85rem !important;
+    font-size: 0.75rem !important; /* Ridotto da 0.85rem */
     margin-bottom: 0 !important;
+    opacity: 0.85 !important;
   }
 }
     </style>
@@ -548,42 +645,42 @@ body {
                 <div class="gallery-carousel">
                     <div class="gallery-container">
                         <div class="gallery-slide active">
-                            <img src="images/gallery-1.jpg" alt="Carbonara" width="900" height="601" loading="lazy">
+                            <img src="images/gallery-1.jpg" alt="Carbonara" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Spaghetti Carbonara</h3>
                                 <p>La nostra interpretazione del classico romano</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="900" height="514" loading="lazy">
+                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Atmosfera Accogliente</h3>
                                 <p>L'interno caldo della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="900" height="514" loading="lazy">
+                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Amatriciana</h3>
                                 <p>Tradizione e sapore in ogni piatto</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Sala Principale</h3>
                                 <p>Il cuore della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Tiramisù Artigianale</h3>
                                 <p>Dolce tradizione fatto in casa</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="1344" height="768" loading="lazy">
                             <div class="slide-caption">
                                 <h3>La Nostra Facciata</h3>
                                 <p>Benvenuti a Osteria della Tradizione</p>
@@ -601,15 +698,15 @@ body {
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </button>
-                    
-                    <div class="gallery-indicators">
-                        <button class="indicator active" data-slide="0" aria-label="Vai alla slide 1"></button>
-                        <button class="indicator" data-slide="1" aria-label="Vai alla slide 2"></button>
-                        <button class="indicator" data-slide="2" aria-label="Vai alla slide 3"></button>
-                        <button class="indicator" data-slide="3" aria-label="Vai alla slide 4"></button>
-                        <button class="indicator" data-slide="4" aria-label="Vai alla slide 5"></button>
-                        <button class="indicator" data-slide="5" aria-label="Vai alla slide 6"></button>
-                    </div>
+                </div>
+                
+                <div class="gallery-indicators">
+                    <button class="indicator active" data-slide="0" aria-label="Vai alla slide 1"></button>
+                    <button class="indicator" data-slide="1" aria-label="Vai alla slide 2"></button>
+                    <button class="indicator" data-slide="2" aria-label="Vai alla slide 3"></button>
+                    <button class="indicator" data-slide="3" aria-label="Vai alla slide 4"></button>
+                    <button class="indicator" data-slide="4" aria-label="Vai alla slide 5"></button>
+                    <button class="indicator" data-slide="5" aria-label="Vai alla slide 6"></button>
                 </div>
             </div>
         </section>
@@ -699,9 +796,9 @@ body {
                         <p><strong>Chiuso:</strong> Lunedì</p>
                         
                         <div class="social-links">
-                            <a href="#" aria-label="Facebook">FB</a>
-                            <a href="#" aria-label="Instagram">IG</a>
-                            <a href="#" aria-label="TripAdvisor">TA</a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                         </div>
                     </div>
                     <div class="contact-map">
@@ -737,9 +834,9 @@ body {
                 <div class="footer-social">
                     <h3>Seguici</h3>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">FB</a>
-                        <a href="#" aria-label="Instagram">IG</a>
-                        <a href="#" aria-label="TripAdvisor">TA</a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
             </div>
