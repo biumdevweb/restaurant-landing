@@ -151,6 +151,14 @@ body {
   z-index: 1;
   max-width: 800px;
   padding: 0 var(--spacing-md);
+  /* Prevent CLS by setting explicit dimensions */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Reserve space for content to prevent layout shift */
+  contain: layout;
 }
 
 .hero-title {
@@ -159,6 +167,10 @@ body {
   margin-bottom: var(--spacing-md);
   font-weight: 700;
   animation: fadeInUp 1s ease-out;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-subtitle {
@@ -166,6 +178,10 @@ body {
   margin-bottom: var(--spacing-sm);
   animation: fadeInUp 1s ease-out 0.2s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-motto {
@@ -175,6 +191,10 @@ body {
   color: var(--secondary-color);
   animation: fadeInUp 1s ease-out 0.4s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .cta-button {

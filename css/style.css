@@ -209,12 +209,24 @@ a:hover {
   z-index: 1;
   max-width: 800px;
   padding: 0 var(--spacing-md);
+  /* Prevent CLS by setting explicit dimensions */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Reserve space for content to prevent layout shift */
+  contain: layout;
 }
 
 .hero-title {
   font-size: 3.5rem;
   margin-bottom: var(--spacing-md);
   animation: fadeInUp 1s ease-out;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-subtitle {
@@ -222,6 +234,10 @@ a:hover {
   margin-bottom: var(--spacing-sm);
   animation: fadeInUp 1s ease-out 0.2s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-motto {
@@ -231,6 +247,10 @@ a:hover {
   color: var(--secondary-color);
   animation: fadeInUp 1s ease-out 0.4s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 /* About Section */
@@ -751,9 +771,10 @@ a:hover {
 
 .footer-motto {
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-top: var(--spacing-xs);
-  color: var(--secondary-color);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 .footer-links ul {
@@ -801,9 +822,10 @@ a:hover {
 
 .footer-signature {
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-top: var(--spacing-xs);
-  color: var(--secondary-color);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 /* Animations */

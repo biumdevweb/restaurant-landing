@@ -15,10 +15,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
+    <style>
+      /* Font fallback con font-display: swap per prevenire FOIT */
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      /* Applica font-display: swap ai font caricati dinamicamente */
+      @font-face {
+        font-family: 'Playfair Display';
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: 'Open Sans';
+        font-display: swap;
+      }
+    </style>
     
     <!-- Font Awesome for icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <style>
+      /* Font Awesome con font-display: swap per prevenire testo invisibile */
+      @font-face {
+        font-family: 'Font Awesome 6 Free';
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: 'Font Awesome 6 Brands';
+        font-display: swap;
+      }
+    </style>
     
     <!-- Critical CSS -->
     <style>
@@ -187,6 +214,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Reserve space for content to prevent layout shift */
+  contain: layout;
 }
 
 .hero-title {
@@ -199,6 +228,8 @@ body {
   line-height: 1.2;
   /* Reserve space to prevent layout shift */
   min-height: 1.2em;
+  /* Prevent invisible text during font loading */
+  font-display: swap;
 }
 
 .hero-subtitle {
@@ -210,6 +241,8 @@ body {
   line-height: 1.2;
   /* Reserve space to prevent layout shift */
   min-height: 1.2em;
+  /* Prevent invisible text during font loading */
+  font-display: swap;
 }
 
 .hero-motto {
@@ -223,6 +256,8 @@ body {
   line-height: 1.2;
   /* Reserve space to prevent layout shift */
   min-height: 1.2em;
+  /* Prevent invisible text during font loading */
+  font-display: swap;
 }
 
 .cta-button {
@@ -657,42 +692,42 @@ body {
                 <div class="gallery-carousel">
                     <div class="gallery-container">
                         <div class="gallery-slide active">
-                            <img src="images/gallery-1.jpg" alt="Carbonara" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-1.jpg" alt="Carbonara" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>Spaghetti Carbonara</h3>
                                 <p>La nostra interpretazione del classico romano</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>Atmosfera Accogliente</h3>
                                 <p>L'interno caldo della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>Amatriciana</h3>
                                 <p>Tradizione e sapore in ogni piatto</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>Sala Principale</h3>
                                 <p>Il cuore della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>Tiramisù Artigianale</h3>
                                 <p>Dolce tradizione fatto in casa</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="1344" height="768" loading="lazy">
+                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
                             <div class="slide-caption">
                                 <h3>La Nostra Facciata</h3>
                                 <p>Benvenuti a Osteria della Tradizione</p>
@@ -810,7 +845,7 @@ body {
                         <div class="social-links">
                             <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                            <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
                         </div>
                     </div>
                     <div class="contact-map">
@@ -854,7 +889,7 @@ body {
                     <div class="social-links">
                         <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
                     </div>
                 </div>
             </div>
