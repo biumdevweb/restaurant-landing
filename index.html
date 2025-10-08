@@ -96,7 +96,7 @@ body {
 }
 
 .nav-logo a {
-  font-family: var(--font-heading);
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -171,14 +171,24 @@ body {
   z-index: 1;
   max-width: 800px;
   padding: 0 var(--spacing-md);
+  /* Prevent CLS by setting explicit dimensions */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-title {
-  font-family: var(--font-heading);
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 3.5rem;
   margin-bottom: var(--spacing-md);
   font-weight: 700;
   animation: fadeInUp 1s ease-out;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-subtitle {
@@ -186,6 +196,10 @@ body {
   margin-bottom: var(--spacing-sm);
   animation: fadeInUp 1s ease-out 0.2s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .hero-motto {
@@ -195,6 +209,10 @@ body {
   color: var(--secondary-color);
   animation: fadeInUp 1s ease-out 0.4s;
   animation-fill-mode: both;
+  /* Prevent CLS with consistent line-height */
+  line-height: 1.2;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .cta-button {
@@ -276,6 +294,27 @@ body {
   .hero-subtitle {
     font-size: 1rem;
   }
+  
+  .hero-content {
+    min-height: 280px;
+  }
+  
+  /* Gallery Carousel Mobile Optimizations */
+  .slide-caption {
+    padding: 0.5rem 1.5vw !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent) !important;
+  }
+  
+  .slide-caption h3 {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .slide-caption p {
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -285,6 +324,35 @@ body {
   
   .hero-title {
     font-size: 2rem;
+  }
+  
+  .hero-content {
+    min-height: 250px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-motto {
+    font-size: 1rem;
+  }
+  
+  /* Gallery Carousel Small Mobile Optimizations */
+  .slide-caption {
+    padding: 0.4rem 1.8vw !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), transparent) !important;
+  }
+  
+  .slide-caption h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.1rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  .slide-caption p {
+    font-size: 0.85rem !important;
+    margin-bottom: 0 !important;
   }
 }
     </style>
@@ -361,7 +429,7 @@ body {
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="600" height="338" loading="lazy">
+                        <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="560" height="338" loading="lazy" style="object-fit: cover; width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
@@ -480,21 +548,21 @@ body {
                 <div class="gallery-carousel">
                     <div class="gallery-container">
                         <div class="gallery-slide active">
-                            <img src="images/gallery-1.jpg" alt="Carbonara" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-1.jpg" alt="Carbonara" width="900" height="601" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Spaghetti Carbonara</h3>
                                 <p>La nostra interpretazione del classico romano</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="900" height="514" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Atmosfera Accogliente</h3>
                                 <p>L'interno caldo della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="900" height="500" loading="lazy">
+                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="900" height="514" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Amatriciana</h3>
                                 <p>Tradizione e sapore in ogni piatto</p>
