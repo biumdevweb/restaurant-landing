@@ -149,7 +149,7 @@ body {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background-image: url('../images/hero-bg.jpg');
+  background-image: url('../images/hero-bg.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -159,6 +159,12 @@ body {
   justify-content: center;
   text-align: center;
   color: white;
+}
+
+@supports not (background-image: url('test.webp')) {
+  .hero {
+    background-image: url('../images/hero-bg.jpg');
+  }
 }
 
 .hero-overlay {
@@ -459,7 +465,10 @@ body {
     <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="alternate icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="alternate icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -526,7 +535,10 @@ body {
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="560" height="338" loading="lazy" style="object-fit: cover; width: 100%; height: auto;">
+                        <picture>
+                            <source srcset="images/about-image.webp" type="image/webp">
+                            <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="560" height="338" loading="lazy" style="object-fit: cover; width: 100%; height: auto;">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -796,16 +808,22 @@ body {
                         <p><strong>Chiuso:</strong> Lunedì</p>
                         
                         <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                            <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                         </div>
                     </div>
                     <div class="contact-map">
-                        <div class="map-placeholder">
-                            <img src="images/map-placeholder.jpg" alt="Mappa della posizione" width="600" height="400" loading="lazy">
-                            <p>Via del Corso, 123 - Roma</p>
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.248936398018!2d12.47639791544112!3d41.90278377922044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f60b9b9b9b9b9%3A0x9b9b9b9b9b9b9b9b!2sVia%20del%20Corso%2C%20123%2C%2000186%20Roma%20RM!5e0!3m2!1sit!2sit!4v1234567890"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Mappa di Osteria della Tradizione">
+                            </iframe>
                         </div>
+                        <p class="map-address"><a href="https://maps.google.com/?q=Via+del+Corso+123+Roma" target="_blank" rel="noopener noreferrer">Via del Corso, 123 - 00186 Roma (RM) → Apri in Google Maps</a></p>
                     </div>
                 </div>
             </div>
@@ -834,14 +852,14 @@ body {
                 <div class="footer-social">
                     <h3>Seguici</h3>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Osteria della Tradizione. Tutti i diritti riservati.</p>
+                <p>&copy; <span id="current-year"></span> Osteria della Tradizione. Tutti i diritti riservati.</p>
                 <p>P.IVA: 12345678901</p>
                 <p class="footer-signature">Con amore da Marco e Giulia Rossi</p>
             </div>

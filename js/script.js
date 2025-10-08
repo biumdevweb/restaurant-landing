@@ -289,6 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (gallerySlides.length > 0) {
     showSlide(0);
   }
+  
+  // Set current year in footer
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
 });
 
 // Scroll animations
