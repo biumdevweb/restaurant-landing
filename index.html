@@ -13,10 +13,285 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Critical CSS -->
+    <style>
+/* Critical CSS for above-the-fold content */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #FFF;
+}
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --primary-color: #D2691E; /* Terracotta */
+  --secondary-color: #F4A460; /* Sandy Brown */
+  --accent-color: #6B8E23; /* Verde Oliva */
+  --text-color: #333;
+  --text-light: #666;
+  --bg-color: #FFF;
+  --bg-light: #F5F5DC; /* Cream */
+  --overlay-color: rgba(0, 0, 0, 0.6);
+  --premium-color: #800020; /* Burgundy */
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border Radius */
+  --border-radius: 8px;
+  
+  /* Shadows */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header & Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.navbar {
+  padding: var(--spacing-sm) 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo a {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-logo a:hover {
+  color: var(--accent-color);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item {
+  margin-left: var(--spacing-lg);
+}
+
+.nav-link {
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background-image: url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-color);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 var(--spacing-md);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  animation: fadeInUp 1s ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+.hero-motto {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: var(--spacing-lg);
+  color: var(--secondary-color);
+  animation: fadeInUp 1s ease-out 0.4s;
+  animation-fill-mode: both;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: var(--shadow);
+    padding: var(--spacing-md) 0;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-item {
+    margin: var(--spacing-sm) 0;
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -86,7 +361,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione">
+                        <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="600" height="338" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -205,42 +480,42 @@
                 <div class="gallery-carousel">
                     <div class="gallery-container">
                         <div class="gallery-slide active">
-                            <img src="images/gallery-1.jpg" alt="Carbonara">
+                            <img src="images/gallery-1.jpg" alt="Carbonara" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Spaghetti Carbonara</h3>
                                 <p>La nostra interpretazione del classico romano</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-2.jpg" alt="Interno Osteria">
+                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Atmosfera Accogliente</h3>
                                 <p>L'interno caldo della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-3.jpg" alt="Amatriciana">
+                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Amatriciana</h3>
                                 <p>Tradizione e sapore in ogni piatto</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-4.jpg" alt="Sala Principale">
+                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Sala Principale</h3>
                                 <p>Il cuore della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-5.jpg" alt="Tiramisù">
+                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>Tiramisù Artigianale</h3>
                                 <p>Dolce tradizione fatto in casa</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-6.jpg" alt="Esterno Osteria">
+                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="900" height="500" loading="lazy">
                             <div class="slide-caption">
                                 <h3>La Nostra Facciata</h3>
                                 <p>Benvenuti a Osteria della Tradizione</p>
@@ -363,7 +638,7 @@
                     </div>
                     <div class="contact-map">
                         <div class="map-placeholder">
-                            <img src="images/map-placeholder.jpg" alt="Mappa della posizione">
+                            <img src="images/map-placeholder.jpg" alt="Mappa della posizione" width="600" height="400" loading="lazy">
                             <p>Via del Corso, 123 - Roma</p>
                         </div>
                     </div>
@@ -409,6 +684,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/script.min.js" defer></script>
 </body>
 </html>
