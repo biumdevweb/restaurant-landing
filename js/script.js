@@ -103,12 +103,12 @@ let touchEndX = 0;
 if (galleryContainer) {
   galleryContainer.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
-  });
+  }, { passive: true });
   
   galleryContainer.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
-  });
+  }, { passive: true });
 }
 
 function handleSwipe() {
@@ -141,12 +141,12 @@ function stopGalleryAutoPlay() {
 if (galleryContainer) {
   startGalleryAutoPlay();
   
-  galleryContainer.addEventListener('mouseenter', stopGalleryAutoPlay);
-  galleryContainer.addEventListener('mouseleave', startGalleryAutoPlay);
+  galleryContainer.addEventListener('mouseenter', stopGalleryAutoPlay, { passive: true });
+  galleryContainer.addEventListener('mouseleave', startGalleryAutoPlay, { passive: true });
   
   // Also pause on touch for mobile
-  galleryContainer.addEventListener('touchstart', stopGalleryAutoPlay);
-  galleryContainer.addEventListener('touchend', startGalleryAutoPlay);
+  galleryContainer.addEventListener('touchstart', stopGalleryAutoPlay, { passive: true });
+  galleryContainer.addEventListener('touchend', startGalleryAutoPlay, { passive: true });
 }
 
 // Form Validation and Submission
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Header background on scroll
+// Header background on scroll - ottimizzato con passive listener
 window.addEventListener('scroll', () => {
   const header = document.querySelector('.header');
   if (window.scrollY > 100) {
@@ -332,7 +332,7 @@ window.addEventListener('scroll', () => {
   } else {
     header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
   }
-});
+}, { passive: true });
 
 // Lazy loading for images
 document.addEventListener('DOMContentLoaded', () => {
@@ -372,7 +372,7 @@ function isInViewport(element) {
   );
 }
 
-// Add active class to navigation based on scroll position
+// Add active class to navigation based on scroll position - ottimizzato con passive listener
 window.addEventListener('scroll', () => {
   let current = '';
   const sections = document.querySelectorAll('section');
@@ -391,27 +391,27 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');
     }
   });
-});
+}, { passive: true });
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Osteria della Tradizione website loaded successfully!');
   
-  // Handle keyboard navigation for gallery
+  // Handle keyboard navigation for gallery - ottimizzato con passive listener
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       prevSlide();
     } else if (e.key === 'ArrowRight') {
       nextSlide();
     }
-  });
+  }, { passive: true });
   
-  // Pause gallery auto-play when page is not visible
+  // Pause gallery auto-play when page is not visible - ottimizzato con passive listener
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       stopGalleryAutoPlay();
     } else {
       startGalleryAutoPlay();
     }
-  });
+  }, { passive: true });
 });

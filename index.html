@@ -6,46 +6,36 @@
     <meta name="description" content="Osteria della Tradizione - Autentica cucina laziale nel cuore di Roma. Prenota il tuo tavolo per un'esperienza culinaria indimenticabile.">
     <meta property="og:title" content="Osteria della Tradizione - Cucina Laziale Autentica">
     <meta property="og:description" content="Scopri i sapori autentici della cucina laziale. Carbonara, Amatriciana e tanto altro.">
-    <meta property="og:image" content="images/hero-bg.jpg">
+    <meta property="og:image" content="images/hero-bg.webp">
     
     <title>Osteria della Tradizione - Cucina Laziale Autentica</title>
     
-    <!-- Google Fonts -->
+    <!-- Preconnect per font di terze parti -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Preload dei font file di Google Fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWMI.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v35/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v35/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVc.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Google Fonts con font-display: swap -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
-    <style>
-      /* Font fallback con font-display: swap per prevenire FOIT */
-      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
-      
-      /* Applica font-display: swap ai font caricati dinamicamente */
-      @font-face {
-        font-family: 'Playfair Display';
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'Open Sans';
-        font-display: swap;
-      }
-    </style>
     
-    <!-- Font Awesome for icons -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <style>
-      /* Font Awesome con font-display: swap per prevenire testo invisibile */
-      @font-face {
-        font-family: 'Font Awesome 6 Free';
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'Font Awesome 6 Brands';
-        font-display: swap;
-      }
-    </style>
+    <!-- Font Awesome for icons - Carichiamo solo le icone necessarie -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css"></noscript>
+    
+    <!-- Preload dei font file per Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Critical CSS -->
     <style>
@@ -492,6 +482,14 @@ body {
     margin-bottom: 0 !important;
     opacity: 0.85 !important;
   }
+  
+  /* Stili per la mappa */
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+  }
 }
     </style>
     
@@ -501,9 +499,6 @@ body {
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="alternate icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="alternate icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -571,7 +566,11 @@ body {
                     </div>
                     <div class="about-image">
                         <picture>
+                            <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                            <source media="(max-width: 768px)" srcset="images/about-image-small.webp" type="image/webp">
+                            <!-- Desktop: immagine più grande -->
                             <source srcset="images/about-image.webp" type="image/webp">
+                            <!-- Fallback per browser che non supportano WebP -->
                             <img src="images/about-image.jpg" alt="Interno dell'Osteria della Tradizione" width="560" height="338" loading="lazy" style="object-fit: cover; width: 100%; height: auto;">
                         </picture>
                     </div>
@@ -692,42 +691,84 @@ body {
                 <div class="gallery-carousel">
                     <div class="gallery-container">
                         <div class="gallery-slide active">
-                            <img src="images/gallery-1.jpg" alt="Carbonara" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-1-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-1.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-1.jpg" alt="Carbonara" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>Spaghetti Carbonara</h3>
                                 <p>La nostra interpretazione del classico romano</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-2.jpg" alt="Interno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-2-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-2.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-2.jpg" alt="Interno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>Atmosfera Accogliente</h3>
                                 <p>L'interno caldo della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-3.jpg" alt="Amatriciana" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-3-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-3.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-3.jpg" alt="Amatriciana" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>Amatriciana</h3>
                                 <p>Tradizione e sapore in ogni piatto</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-4.jpg" alt="Sala Principale" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-4-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-4.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-4.jpg" alt="Sala Principale" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>Sala Principale</h3>
                                 <p>Il cuore della nostra osteria</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-5.jpg" alt="Tiramisù" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-5-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-5.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-5.jpg" alt="Tiramisù" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>Tiramisù Artigianale</h3>
                                 <p>Dolce tradizione fatto in casa</p>
                             </div>
                         </div>
                         <div class="gallery-slide">
-                            <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            <picture>
+                                <!-- Mobile first: immagine piccola per dispositivi mobili -->
+                                <source media="(max-width: 768px)" srcset="images/gallery-6-small.webp" type="image/webp">
+                                <!-- Desktop: immagine più grande -->
+                                <source srcset="images/gallery-6.webp" type="image/webp">
+                                <!-- Fallback per browser che non supportano WebP -->
+                                <img src="images/gallery-6.jpg" alt="Esterno Osteria" width="1344" height="768" loading="lazy" style="aspect-ratio: 16/9;">
+                            </picture>
                             <div class="slide-caption">
                                 <h3>La Nostra Facciata</h3>
                                 <p>Benvenuti a Osteria della Tradizione</p>
