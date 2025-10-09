@@ -400,6 +400,14 @@ a:hover {
   cursor: pointer;
   padding: var(--spacing-sm);
   border-radius: calc(var(--border-radius) / 2);
+  /* Elimina tap highlighting su mobile */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Previene la selezione del testo su mobile */
+  -webkit-touch-callout: none;
 }
 
 .menu-item:hover {
