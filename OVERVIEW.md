@@ -465,3 +465,64 @@ Questi miglioramenti elevano il sito da un semplice progetto portfolio a un'appl
 - **Network Transfer**: Risparmio di ~212KB con lazy loading Google Maps
 - **User Experience**: Migliorata con micro-interazioni e feedback visivo immediato
 - **Code Maintainability**: Separazione netta tra ottimizzazioni performance e interattività
+
+## 🆕 Ottimizzazioni UI/UX Texture Carta (Ultimo Update)
+
+### Sistema Texture Carta Uniforme
+- **Implementazione complete**: Texture carta naturali applicate a tutte le card del sito
+- **Armonia palette cromatica**: Basata su ricerche Perplexity trend 2025 (Terracotta #D2691E, Sandy Brown #F4A460, Verde Oliva #6B8E23)
+- **Sfumature neutre ottimizzate**: #FFFEFC (testimonianze, contatti, prenotazioni), #FFFEF8 (menu)
+- **Background-image layered**: Combinazione di gradienti radiali/lineari + pattern SVG noise/fractal
+- **Performance ottimizzata**: SVG inline senza richieste HTTP aggiuntive
+
+### Texture Specifiche per Sezione
+- **Menu Category** (`.menu-category`):
+  - Colore base: #FFFEF8
+  - Pattern: SVG noise fractal con dettagli Sandy Brown (#F4A460)
+  - Background-blend-mode: multiply, overlay, normal
+  - Dimensione pattern: 100px con multipli layer
+
+- **Testimonial Items** (`.testimonial-item`):
+  - Colore base: #FFFEFC (bianco-avorio neutro)
+  - Pattern: SVG fractal noise con dettagli grigio neutro (#f4f4f4)
+  - Radial gradient per profondità (circle at 30% 20%)
+  - Dimensione pattern: 200px per texture fine
+
+- **Reservation Cards** (`.reservation-info`, `.reservation-form`):
+  - Colore base: #FFFEFC (uniformato con testimonianze e contatti)
+  - Pattern: SVG turbulence neutral con dettagli grigio (#f4f4f4)
+  - Linear gradient per effetto carta artigianale
+  - Opacity texture: 0.06-0.08 per naturalezza
+
+- **Contact Cards** (`.contact-info`, `.contact-map`):
+  - Colore base: #FFFEFC (identico a testimonianze e prenotazioni)
+  - Pattern: SVG fractal noise con dettagli grigio (#f4f4f4)
+  - Combinazione radial + linear gradient per profondità
+  - Coerenza totale con altre sezioni
+
+### Ottimizzazioni Mobile Touch
+- **Tap highlighting eliminato**: `-webkit-tap-highlight-color: transparent` per `.menu-item`
+- **User-select disabilitato**: Previene selezione testo indesiderata su mobile
+- **Touch-callout disabilitato**: `-webkit-touch-callout: none` per menu items
+- **Hover effects preservati**: Animazioni desktop mantenute intatte
+- **Cross-browser compatibility**: Proprietà prefissate per tutti i browser mobile
+
+### Implementazione Tecnica
+- **CSS Variables consistency**: Tutti i colori definiti con CSS variables per manutenibilità
+- **SVG inline patterns**: Texture complesse codificate come data URI per performance
+- **Background-blend-mode**: Combinazione di più layer per profondità e naturalezza
+- **Responsive texture**: Pattern che funzionano correttamente su tutte le densità di schermo
+- **File synchronization**: Aggiornamenti simultanei su style.optimized.css e .min.css
+
+### Impatto UX e Performance
+- **Percezione materiale**: Texture carta simulano materiali fisici autentici
+- **Coerenza visiva**: Palette unificata across tutte le sezioni del sito
+- **Accessibilità mantenuta**: Contrasti WCAG preservati con texture sottili
+- **Performance zero-cost**: Texture implementate senza richieste HTTP aggiuntive
+- **Mobile experience migliorata**: Eliminato tap highlighting con touch optimization
+
+### File Aggiornati
+- **css/style.optimized.css**: Texture carta complete per tutte le componenti
+- **css/style.optimized.min.css**: Versione production con texture ottimizzate
+- **js/script.interactive.js**: Ottimizzazioni touch per menu items
+- **js/script.interactive.min.js**: Versione minificata con touch improvements
