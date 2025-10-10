@@ -33,6 +33,8 @@
     
     <!-- Preload dei font file per Font Awesome solo per le icone utilizzate -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Preload font file per TripAdvisor icon (fa-brands) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Critical CSS -->
     <style>
@@ -883,7 +885,13 @@ body {
                         <div class="social-links">
                             <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                            <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor">
+                                <i class="fa-brands fa-tripadvisor"></i>
+                                <!-- Fallback SVG per TripAdvisor se Font Awesome non carica -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display: none;">
+                                    <path d="M8.25 1.01C4.85 1.01 2.1 3.76 2.1 7.16c0 2.37 1.29 4.44 3.21 5.54l.31-1.01c-1.54-.91-2.57-2.58-2.57-4.53 0-2.87 2.33-5.2 5.2-5.2s5.2 2.33 5.2 5.2c0 1.95-1.03 3.62-2.57 4.53l.31 1.01c1.92-1.1 3.21-3.17 3.21-5.54 0-3.4-2.75-6.15-6.15-6.15zm0 2.5c-2.02 0-3.65 1.63-3.65 3.65 0 1.67 1.12 3.08 2.65 3.52l.31-1.01c-1.05-.32-1.81-1.3-1.81-2.51 0-1.42 1.15-2.57 2.57-2.57s2.57 1.15 2.57 2.57c0 1.21-.76 2.19-1.81 2.51l.31 1.01c1.53-.44 2.65-1.85 2.65-3.52 0-2.02-1.63-3.65-3.65-3.65z"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                     <div class="contact-map">
@@ -925,7 +933,13 @@ body {
                     <div class="social-links">
                         <a href="https://www.facebook.com/osteriadellatradizione.roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/osteria_tradizione_roma" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1234567-Reviews-Osteria_della_Tradizione-Rome_Lazio.html" target="_blank" rel="noopener noreferrer" aria-label="Leggi le recensioni su TripAdvisor">
+                            <i class="fa-brands fa-tripadvisor"></i>
+                            <!-- Fallback SVG per TripAdvisor se Font Awesome non carica -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display: none;">
+                                <path d="M8.25 1.01C4.85 1.01 2.1 3.76 2.1 7.16c0 2.37 1.29 4.44 3.21 5.54l.31-1.01c-1.54-.91-2.57-2.58-2.57-4.53 0-2.87 2.33-5.2 5.2-5.2s5.2 2.33 5.2 5.2c0 1.95-1.03 3.62-2.57 4.53l.31 1.01c1.92-1.1 3.21-3.17 3.21-5.54 0-3.4-2.75-6.15-6.15-6.15zm0 2.5c-2.02 0-3.65 1.63-3.65 3.65 0 1.67 1.12 3.08 2.65 3.52l.31-1.01c-1.05-.32-1.81-1.3-1.81-2.51 0-1.42 1.15-2.57 2.57-2.57s2.57 1.15 2.57 2.57c0 1.21-.76 2.19-1.81 2.51l.31 1.01c1.53-.44 2.65-1.85 2.65-3.52 0-2.02-1.63-3.65-3.65-3.65z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -941,5 +955,31 @@ body {
     <script src="js/script.main.min.js" defer></script>
     <!-- JavaScript interattivo avanzato -->
     <script src="js/script.interactive.min.js" defer></script>
+    
+    <!-- Script per mostrare fallback SVG se l'icona TripAdvisor non carica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Controlla se le icone TripAdvisor sono visibili dopo un breve ritardo
+            setTimeout(function() {
+                const tripadvisorIcons = document.querySelectorAll('.fa-tripadvisor');
+                tripadvisorIcons.forEach(function(icon) {
+                    // Controlla se l'icona ha dimensioni zero (non caricata)
+                    const computedStyle = window.getComputedStyle(icon);
+                    const width = parseFloat(computedStyle.width);
+                    const height = parseFloat(computedStyle.height);
+                    
+                    if (width === 0 || height === 0) {
+                        // Nascondi l'icona Font Awesome non caricata
+                        icon.style.display = 'none';
+                        // Mostra il fallback SVG
+                        const svgFallback = icon.nextElementSibling;
+                        if (svgFallback && svgFallback.tagName === 'svg') {
+                            svgFallback.style.display = 'inline-block';
+                        }
+                    }
+                });
+            }, 500);
+        });
+    </script>
 </body>
 </html>
